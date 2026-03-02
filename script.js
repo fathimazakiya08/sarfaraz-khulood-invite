@@ -1,11 +1,12 @@
 /* ---------- ENVELOPE OPENING ---------- */
 const envelope = document.getElementById('envelope');
-const flap = document.getElementById('flap');
 const seal = document.getElementById('seal');
 const invite = document.getElementById('invite');
-const envelopeScreen = document.getElementById('envelopeScreen');
+const envelopeScreen = document.querySelector('.envelope-wrapper');
 const bgMusic = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
+
+seal.addEventListener("click", openInvitation);
 
 function openInvitation(){
   // animate flap: add a class on envelope
