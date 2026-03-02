@@ -20,26 +20,25 @@
   <!-- music toggle (top-right) -->
   <button id="musicBtn" aria-label="Toggle music">🔈</button>
 
-  <!-- ENVELOPE LANDING SCREEN -->
-  <main id="envelopeScreen" class="screen">
-    <div class="env-wrap">
-      <div class="envelope" id="envelope">
-        <!-- textured background (optional) -->
-        <div class="paper"></div>
+<!-- ENVELOPE LANDING SCREEN -->
+<main id="envelopeScreen" class="screen">
+  <div class="env-wrap">
+    <div class="envelope" id="envelope">
 
-        <!-- flap that rotates -->
-        <div class="flap" id="flap" aria-hidden="true"></div>
+      <!-- Triangular flap -->
+      <div class="flap"></div>
 
-        <!-- wax seal button with initials - edit initials below -->
-        <button id="seal" class="seal" aria-label="Open invitation" aria-expanded="false">
-          <span class="seal-text" id="sealText">S & K</span>
-        </button>
+      <!-- Wax seal -->
+      <button id="seal" class="seal" aria-label="Open invitation">
+        <span class="seal-text">SK</span>
+      </button>
 
-        <!-- small hint -->
-        <div class="hint">Tap the seal to open</div>
-      </div>
+      <!-- Tap text -->
+      <div class="hint">Tap the seal to open</div>
+
     </div>
-  </main>
+  </div>
+</main>
 
   <!-- INVITATION (hidden until envelope opens) -->
   <article id="invite" class="hidden" tabindex="-1" aria-live="polite">
