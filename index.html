@@ -21,24 +21,23 @@
   <button id="musicBtn" aria-label="Toggle music">🔈</button>
 
 <!-- ENVELOPE LANDING SCREEN -->
-<main id="envelopeScreen" class="screen">
-  <div class="env-wrap">
-    <div class="envelope" id="envelope">
+<div class="envelope-wrapper">
+  <div class="envelope" id="envelope">
 
-      <!-- Triangular flap -->
-      <div class="flap"></div>
+    <div class="flap"></div>
 
-      <!-- Wax seal -->
-      <button id="seal" class="seal" aria-label="Open invitation">
-        <span class="seal-text">SK</span>
-      </button>
-
-      <!-- Tap text -->
-      <div class="hint">Tap the seal to open</div>
-
+    <div class="seal" id="seal">
+      <span>SK</span>
     </div>
+
+    <div class="tap-text">
+      Tap to open
+    </div>
+
+    <div class="letter"></div>
+
   </div>
-</main>
+</div>
 
   <!-- INVITATION (hidden until envelope opens) -->
   <article id="invite" class="hidden" tabindex="-1" aria-live="polite">
