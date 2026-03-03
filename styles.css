@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* reset & base */
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#f7f5f2;color:#222}
@@ -183,4 +184,93 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   .seal{width:70px;top:46%}
   .tap-text{font-size:14px;bottom:-46px}
   .details-content{padding:22px}
+=======
+/* reset & base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#f7f5f2;color:#222}
+.hidden{display:none !important}
+
+/* ENVELOPE SCREEN */
+.envelope-screen{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:#f7f5f2;z-index:30;perspective:1800px;
+}
+.envelope{position:relative;width:min(520px,78vw);height:auto;text-align:center}
+.envelope img{display:block;max-width:100%}
+
+/* envelope bottom (base) */
+.envelope-bottom{position:relative;z-index:1;}
+
+/* flap sits above */
+.envelope-flap{
+  position:absolute;left:50%;transform:translateX(-50%);top:0;z-index:3;
+  transform-origin:top center;transition:transform .9s cubic-bezier(.2,.9,.2,1), top .9s;
+  will-change:transform;
+  cursor:pointer;
+}
+
+
+/* tap text (inside envelope screen, just below) */
+.tap-text{
+  position:absolute;left:50%;transform:translateX(-50%);bottom:-58px;color:#7a3b3b;
+  letter-spacing:4px;font-size:18px;font-weight:500;z-index:2;
+}
+
+/* OPEN state: flip the flap up and drop the envelope a bit */
+.envelope-screen.open .envelope-flap{
+  transform:translateX(-50%) rotateX(-100deg) translateY(-12%);
+  top:-30%;
+}
+.envelope-screen.open .envelope-bottom{
+  transform:translateY(12%);transition:transform .9s;
+}
+
+/* subtle seal press feedback */
+.seal:active{transform:translateX(-50%) scale(.98)}
+
+/* MAIN CONTENT (video hero) */
+.video-section{
+  position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:#000;
+}
+.video-section video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.35));z-index:1}
+
+.video-text{
+  position:relative;z-index:2;text-align:center;color:#fff;padding:40px 20px;
+}
+.video-text h1{font-size:clamp(28px,5vw,64px);margin:0 0 8px 0;letter-spacing:.5px;text-shadow:0 6px 18px rgba(0,0,0,.6)}
+.video-text .amp{display:block;font-size:40px;margin:8px 0;opacity:.9}
+
+/* DETAILS background (maroon) */
+.details-section{
+  padding:80px 20px; background-image:url('assets/details-bg.png'); background-size:cover;
+  background-position:center; color:#fff;
+}
+.details-content{max-width:980px;margin:0 auto;background:rgba(0,0,0,0.12);padding:36px;border-radius:8px}
+.details-content h2{margin:0 0 8px;font-weight:400;opacity:.95}
+.details-content .names{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.details-content .left,.details-content .right{flex:1;min-width:220px}
+.details-content h1{font-size:30px;margin:6px 0 6px}
+
+/* INFO cards grid */
+.info-section{padding:48px 20px;background:#f2ebe9}
+.info-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.info-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.78));
+  border-radius:12px;padding:20px;box-shadow: 0 12px 24px rgba(0,0,0,0.12), inset 0 -4px 8px rgba(0,0,0,0.03);
+  border:1px solid rgba(0,0,0,.05);backdrop-filter: blur(2px);
+}
+.info-card h3{margin:0 0 6px;font-size:14px;color:#7a3b3b}
+.info-card p{margin:0;font-size:16px;color:#222}
+.map-link{color:#6a1b1b;text-decoration:underline}
+
+/* small screens tweaks */
+@media (max-width:600px){
+  .seal{width:70px;top:46%}
+  .tap-text{font-size:14px;bottom:-46px}
+  .details-content{padding:22px}
+>>>>>>> 1b8411d5cb94b5a5ff0536e093dce864999b50f0
 }
