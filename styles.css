@@ -134,7 +134,8 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 .details-video-section video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #7a0f1b;
 }
 
 /* INFO SECTION - SOFT PASTEL DESIGN */
