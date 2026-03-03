@@ -1,17 +1,15 @@
 /* ---------- ENVELOPE OPENING ---------- */
-const envelope = document.getElementById('envelope');
-const seal = document.getElementById('seal');
+const envelope = document.getElementById("envelope");
+const seal = document.getElementById("seal");
 const invite = document.getElementById('invite');
 const envelopeScreen = document.querySelector('.envelope-wrapper');
 const bgMusic = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 
-seal.addEventListener("click", openInvitation);
+seal.addEventListener("click", () => {
+  envelope.classList.add("open");
+});
 
-function openInvitation(){
-  // animate flap: add a class on envelope
-  envelope.classList.add('open');
-  seal.setAttribute('aria-expanded','true');
 
   // after flap animation time, hide envelope and show invite
   setTimeout(() => {
