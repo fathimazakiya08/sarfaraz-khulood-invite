@@ -138,64 +138,24 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   background: #7a0f1b;
 }
 
-/* INFO SECTION - SOFT PASTEL DESIGN */
-
-.info-section{
-  background:#7a0f1b;
-  padding:120px 20px;
+/* THIRD VIDEO SECTION */
+.third-section{
+  background:#6f0c12; /* same maroon continuation */
   display:flex;
   justify-content:center;
+  align-items:center;
+  padding:0;
 }
 
-.info-grid{
+.third-video-wrap{
+  width:min(900px,94vw);
+}
+
+.third-video-wrap video{
   width:100%;
-  max-width:900px;
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap: 30px;
-}
-
-/* pastel pink glass boxes */
-.info-card{
-  background:rgba(255,200,210,0.15);
-  border:1px solid rgba(255,200,210,0.4);
-  backdrop-filter:blur(8px);
-  padding: 40px 20px;
-  border-radius: 22px;;
-  text-align:center;
-  box-shadow:
-    0 15px 30px rgba(0,0,0,0.25);
-  transition:transform .3s ease;
-}
-
-.info-card:hover{
-  transform:translateY(-5px);
-}
-
-.info-card h3{
-  font-size:14px;
-  letter-spacing:4px;
-  margin-bottom:15px;
-  text-transform:uppercase;
-  color:#f8d7da;
-}
-
-.info-card p{
-  font-size:20px;
-  font-weight:600;
-  color:white;
-}
-
-.map-link{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 28px;
-  background:white;
-  color:#7a0f1b;
-  border-radius:30px;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:600;
+  height:auto;
+  object-fit:contain;
+  display:block;
 }
 
 /* small screens tweaks */
