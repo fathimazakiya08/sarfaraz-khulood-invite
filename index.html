@@ -1,119 +1,94 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sarfaraz & Khulood — Invitation</title>
-
-  <!-- fonts: change if you want -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css?v=2">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sarfaraz & Khulood</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- AUDIO (muted until user opens invitation) -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="assets/music.mp3" type="audio/mpeg">
-  </audio>
+<!-- ENVELOPE SCREEN (landed full screen) -->
+<section class="envelope-screen" id="envelopeScreen">
+  <div class="envelope">
+    <img src="assets/envelope-bottom.png" class="envelope-bottom">
 
-  <!-- music toggle (top-right) -->
-  <button id="musicBtn" aria-label="Toggle music">🔈</button>
+    <!-- FLAP WITH SEAL INSIDE IMAGE -->
+    <img src="assets/envelope-flap.png"
+         class="envelope-flap"
+         id="sealBtn">
 
-<!-- ENVELOPE LANDING SCREEN -->
-<!-- PREMIUM FULLSCREEN ENVELOPE -->
-<div class="envelope-wrapper">
-  <div class="envelope" id="envelope">
-
-    <div class="flap"></div>
-
-    <div class="seal" id="seal">
-      <span class="seal-text">SK</span>
-    </div>
-
-    <div class="tap-text">Tap to open</div>
-
+    <div class="tap-text">Tap the seal to open</div>
   </div>
-</div>
+</section>
 
-  <!-- INVITATION (hidden until envelope opens) -->
-  <article id="invite" class="hidden" tabindex="-1" aria-live="polite">
-    <!-- HERO: video background -->
-    <header class="hero">
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="assets/hero.mp4" type="video/mp4">
-      </video>
+<!-- MAIN (hidden until envelope opens) -->
+<main id="mainContent" class="hidden">
 
-      <div class="hero-overlay">
-        <!-- Top bar (optional logo on left, music icon bottom right is separate) -->
-        <div class="topbar">
-          <img src="assets/logo.svg" alt="SMG" class="logo" onerror="this.style.display='none'">
+  <!-- VIDEO HERO -->
+  <section class="video-section">
+    <video id="heroVideo" autoplay muted loop playsinline>
+      <source src="assets/video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="video-text">
+      <h1 class="groom">Sarfaraz Hussain</h1>
+      <span class="amp">&amp;</span>
+      <h1 class="bride">Khulood Hassan</h1>
+    </div>
+  </section>
+
+  <!-- DETAILS (maroon background) -->
+  <section class="details-section">
+    <div class="details-content">
+      <h2>The Wedding Of</h2>
+
+      <div class="names">
+        <div class="left">
+          <h1>Sarfaraz Hussain</h1>
+          <p>Son of Mr. Iqbal Hussain<br>& Mrs. Rahamath Nisa</p>
         </div>
 
-        <!-- Names and intro -->
-        <div class="hero-center">
-          <h1 class="hero-names">
-            <span class="script">Sarfaraz Hussain</span>
-            <span class="amp">&amp;</span>
-            <span class="script">Khulood Hassan</span>
-          </h1>
-          <p class="hero-sub">05 April 2026 • 11:00 AM</p>
+        <div class="right">
+          <h1>Khulood Hassan</h1>
+          <p>Daughter of Mr. Hassanabba Ismail<br>& Mrs. Umaira Banu</p>
         </div>
-
-        <!-- small down caret -->
-        <button class="scrollDown" id="scrollDown" aria-label="Scroll to details">⌄</button>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- MAIN CONTENT (scrollable) -->
-    <section class="content">
-      <!-- Save the date card -->
-      <div class="card fade-up">
-        <h2>Save the Date</h2>
-        <p><strong>05 April 2026 — 11:00 AM</strong></p>
-        <p>Wedding of Sarfaraz Hussain (son of Iqbal Hussain &amp; Rahmath Nisa) and Khulood Hassan (daughter of Hassan Abbas Ismail &amp; Umaira Banu)</p>
+  <!-- INFO BOXES (date/time/venue/location) -->
+  <section class="info-section">
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Date</h3>
+        <p>05 April 2026</p>
       </div>
 
-      <!-- Venue + map -->
-      <div class="card fade-up">
-        <h2>Venue</h2>
-        <p>Address: use the map button below to open location in Google Maps.</p>
-        <a class="btn map-btn" href="https://maps.app.goo.gl/WKC82FQkNBgXuzHF7?g_st=ic" target="_blank" rel="noopener">
-          <!-- inline SVG location icon -->
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-          &nbsp;Open in Google Maps
-        </a>
+      <div class="info-card">
+        <h3>Time</h3>
+        <p>11:30 AM</p>
       </div>
 
-      <!-- Program / schedule -->
-      <div class="card fade-up">
-        <h2>Program</h2>
-        <ul class="timeline">
-          <li><strong>11:00</strong> — Ceremony</li>
-          <li><strong>13:00</strong> — Reception</li>
-          <li><strong>19:00</strong> — Dinner & Celebration</li>
-        </ul>
+      <div class="info-card">
+        <h3>Venue</h3>
+        <p>Heritage Convention Hall</p>
       </div>
 
-      <!-- Prayer / Quran quote -->
-      <div class="card fade-up prayer">
-        <h2>Prayer for the couple</h2>
-        <blockquote>
-          “And of His signs is that He created for you from yourselves mates that you may find tranquillity in them; and He placed between you affection and mercy. Indeed in that are signs for a people who reflect.”<br>
-          <cite>— Qur’an 30:21</cite>
-        </blockquote>
+      <div class="info-card">
+        <h3>Location</h3>
+        <p><a class="map-link" href="https://maps.google.com" target="_blank" rel="noopener">📍 View on Google Maps</a></p>
       </div>
 
-      <!-- Footer / logo -->
-      <div class="card fade-up footer">
-        <div class="logo-wrap">
-          <img src="assets/logo.svg" alt="SMG" onerror="this.style.display='none'">
-        </div>
-        <p class="small">Questions? Contact: <a href="mailto:example@example.com">example@example.com</a></p>
-        <p class="small"><a href="assets/invite.ics" download>Download invitation (.ics)</a></p>
-      </div>
-    </section>
-  </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- audio file (optional) -->
+<audio id="bgMusic" src="assets/music.mp3" loop></audio>
 
 <script src="script.js"></script>
 </body>

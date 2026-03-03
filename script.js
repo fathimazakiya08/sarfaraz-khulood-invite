@@ -1,72 +1,35 @@
-/* ---------- ENVELOPE OPENING ---------- */
-const envelope = document.getElementById("envelope");
-const seal = document.getElementById("seal");
-const invite = document.getElementById('invite');
-const envelopeScreen = document.querySelector('.envelope-wrapper');
-const bgMusic = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const seal = document.getElementById('sealBtn');
+  const envelopeScreen = document.getElementById('envelopeScreen');
+  const mainContent = document.getElementById('mainContent');
+  const bgMusic = document.getElementById('bgMusic');
+  const heroVideo = document.getElementById('heroVideo');
 
-seal.addEventListener("click", () => {
-  envelope.classList.add("open");
-});
+  function openInvite() {
+    // animation: add open class
+    envelopeScreen.classList.add('open');
 
-
-  // after flap animation time, hide envelope and show invite
-  setTimeout(() => {
-    envelopeScreen.style.display = 'none';
-    invite.classList.remove('hidden');
-    // move focus for screen readers
-    invite.focus({preventScroll:true});
-
-    // try to play music (mobile may require gesture, so only play if allowed)
-    bgMusic.play().catch(()=>{/* autoplay blocked; user must toggle */});
-  }, 950);
-}
-
-seal.addEventListener('click', openInvitation);
-seal.addEventListener('keydown', e => { if(e.key === 'Enter') openInvitation(); });
-
-/* ---------- SCROLL DOWN FROM HERO ---------- */
-const scrollDown = document.getElementById('scrollDown');
-if (scrollDown) {
-  scrollDown.addEventListener('click', () => {
-    // scroll to first .card
-    const firstCard = document.querySelector('.content .card');
-    firstCard.scrollIntoView({behavior:'smooth', block:'start'});
-  });
-}
-
-/* ---------- FADE-UP INTERSECTION OBSERVER ---------- */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target);
+    // play music & video — clicking the seal is a user gesture
+    if (bgMusic) {
+      bgMusic.play().catch(()=>{/* autoplay blocked fallback */});
     }
-  });
-}, {threshold:0.15});
+    if (heroVideo) {
+      heroVideo.play().catch(()=>{/* ignore */});
+    }
 
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-/* ---------- MUSIC TOGGLE ---------- */
-musicBtn.addEventListener('click', () => {
-  if(bgMusic.paused){
-    bgMusic.play().catch(()=>{ /* cannot autoplay */ });
-    musicBtn.textContent = '🔊';
-  } else {
-    bgMusic.pause();
-    musicBtn.textContent = '🔈';
+    // after flap animation finishes, hide the envelope screen and reveal main content
+    setTimeout(() => {
+      envelopeScreen.style.display = 'none';
+      mainContent.classList.remove('hidden');
+      // optional: scroll to top of main
+      window.scrollTo({top:0,behavior:'smooth'});
+    }, 950); // matches the .9s transition in CSS
   }
-});
 
-/* ---------- keyboard accessibility: ESC to go back to envelope (optional) ---------- */
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && invite && !invite.classList.contains('hidden')) {
-    // return to envelope view (simple UX)
-    invite.classList.add('hidden');
-    envelopeScreen.style.display = '';
-    envelope.classList.remove('open');
-    bgMusic.pause();
-    musicBtn.textContent = '🔈';
+  // click or keyboard accessibility
+  if (seal) {
+    seal.addEventListener('click', openInvite);
+    seal.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') openInvite(); });
   }
 });

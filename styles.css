@@ -1,106 +1,88 @@
-:root{
-  /* edit these for global theme */
-  --page-bg: #fff7f6;            /* page background */
-  --envelope-maroon: #6b0f0f;    /* envelope maroon color */
-  --accent: #8b2b2b;             /* buttons / accent */
-  --muted: #6b6b6b;
-  --card-bg: rgba(255,255,255,0.95);
-  --radius: 14px;
-}
-
-/* BASIC RESET */
+/* reset & base */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:var(--page-bg);color:#222}
-a{color:inherit}
-
-/* MUSIC BUTTON */
-#musicBtn{
-  position:fixed; top:18px; right:18px; z-index:1200;
-  background:rgba(255,255,255,0.9); border:0; width:44px; height:44px; border-radius:50%;
-  display:grid;place-items:center; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,0.12)
-}
+html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#f7f5f2;color:#222}
+.hidden{display:none !important}
 
 /* ENVELOPE SCREEN */
-.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
-.env-wrap{max-width:420px;width:100%}
-.envelope{
-  width:100%; height:260px; position:relative; perspective:1200px; border-radius:18px; overflow:visible;
-  display:flex;align-items:center;justify-content:center;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02));
-  box-shadow: 0 16px 44px rgba(0,0,0,0.18);
+.envelope-screen{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:#f7f5f2;z-index:30;perspective:1800px;
+}
+.envelope{position:relative;width:min(520px,78vw);height:auto;text-align:center}
+.envelope img{display:block;max-width:100%}
+
+/* envelope bottom (base) */
+.envelope-bottom{position:relative;z-index:1;}
+
+/* flap sits above */
+.envelope-flap{
+  position:absolute;left:50%;transform:translateX(-50%);top:0;z-index:3;
+  transform-origin:top center;transition:transform .9s cubic-bezier(.2,.9,.2,1), top .9s;
+  will-change:transform;
+  cursor:pointer;
 }
 
-/* paper texture layer if present */
-.paper{
-  position:absolute; inset:0; border-radius:18px;
-  background: var(--envelope-maroon);
-  background-image: url("assets/paper-texture.jpg"); background-size:cover; background-blend-mode:multiply; opacity:1;
-  transform: translateZ(0);
+
+/* tap text (inside envelope screen, just below) */
+.tap-text{
+  position:absolute;left:50%;transform:translateX(-50%);bottom:-58px;color:#7a3b3b;
+  letter-spacing:4px;font-size:18px;font-weight:500;z-index:2;
 }
 
-/* Flap (rotates on open) */
-.flap{
-  position:absolute; top:0; left:0; right:0; height:60%;
-  transform-origin: top center; background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.04));
-  border-top-left-radius:18px; border-top-right-radius:18px; z-index:12;
-  box-shadow: inset 0 -6px 16px rgba(0,0,0,0.12);
-  transition: transform 900ms cubic-bezier(.2,.9,.25,1);
+/* OPEN state: flip the flap up and drop the envelope a bit */
+.envelope-screen.open .envelope-flap{
+  transform:translateX(-50%) rotateX(-100deg) translateY(-12%);
+  top:-30%;
+}
+.envelope-screen.open .envelope-bottom{
+  transform:translateY(12%);transition:transform .9s;
 }
 
-/* when open -> flip */
-.envelope.open .flap{ transform: rotateX(-180deg) translateY(-2px); }
+/* subtle seal press feedback */
+.seal:active{transform:translateX(-50%) scale(.98)}
 
-/* wax seal (center) */
-.seal{
-  z-index:30; position:relative; border:0; width:110px; height:110px;border-radius:999px;
-  display:grid;place-items:center; cursor:pointer; transform:translateY(10px);
-  background: radial-gradient(circle at 30% 30%, #ffced0 0%, #8b2b2b 60%);
-  box-shadow: 0 18px 36px rgba(0,0,0,0.28), inset 0 -8px 12px rgba(0,0,0,0.15);
-  color:white; font-weight:700; font-family: "Playfair Display", serif; font-size:18px;
-  transition: transform 140ms ease, box-shadow 140ms;
+/* MAIN CONTENT (video hero) */
+.video-section{
+  position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:#000;
 }
-.seal:active{ transform: translateY(12px) scale(.98); }
-.hint{ position:absolute; bottom:14px; left:50%; transform:translateX(-50%); font-size:13px; color:rgba(255,255,255,0.9); z-index:20; }
+.video-section video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.35));z-index:1}
 
-/* INVITATION HERO */
-.hidden{display:none}
-.hero{position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center; overflow:hidden}
-.hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
-.hero-overlay{position:relative; z-index:10; width:100%; max-width:920px; padding:36px; display:flex; flex-direction:column; align-items:center; gap:18px}
-.topbar{position:absolute; left:20px; top:20px}
-.logo{height:36px; opacity:0.95}
-.hero-center{text-align:center; color:white; text-shadow:0 8px 22px rgba(0,0,0,0.4)}
-.hero-names{margin:0; line-height:0.9; font-family:"Playfair Display",serif; font-size:36px; letter-spacing:0.6px}
-.hero-names .script{display:inline-block; font-family:"Great Vibes",cursive; font-size:48px; margin:0 10px; color:white}
-.amp{display:block; font-size:20px; margin:8px 0; opacity:0.95}
-.hero-sub{margin:6px 0 0; color:rgba(255,255,255,0.95)}
+.video-text{
+  position:relative;z-index:2;text-align:center;color:#fff;padding:40px 20px;
+}
+.video-text h1{font-size:clamp(28px,5vw,64px);margin:0 0 8px 0;letter-spacing:.5px;text-shadow:0 6px 18px rgba(0,0,0,.6)}
+.video-text .amp{display:block;font-size:40px;margin:8px 0;opacity:.9}
 
-/* scroll down button */
-.scrollDown{position:absolute; bottom:22px; border:0; background:rgba(255,255,255,0.9); width:44px; height:44px; border-radius:50%; display:grid;place-items:center; cursor:pointer}
+/* DETAILS background (maroon) */
+.details-section{
+  padding:80px 20px; background-image:url('assets/details-bg.png'); background-size:cover;
+  background-position:center; color:#fff;
+}
+.details-content{max-width:980px;margin:0 auto;background:rgba(0,0,0,0.12);padding:36px;border-radius:8px}
+.details-content h2{margin:0 0 8px;font-weight:400;opacity:.95}
+.details-content .names{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.details-content .left,.details-content .right{flex:1;min-width:220px}
+.details-content h1{font-size:30px;margin:6px 0 6px}
 
-/* MAIN CONTENT */
-.content{max-width:920px;margin: -40px auto 80px; padding:18px}
-.card{background:var(--card-bg); border-radius:12px; padding:22px; margin:18px 0; box-shadow:0 12px 30px rgba(0,0,0,0.06); color:#1c1c1c}
-.card h2{margin:0 0 8px; font-family:'Playfair Display',serif}
-.btn{display:inline-flex; gap:10px; align-items:center; padding:10px 14px; border-radius:10px; background:var(--accent); color:white; text-decoration:none; font-weight:600}
-.timeline{list-style:none;padding-left:0;margin:10px 0}
-.timeline li{margin:8px 0;color:var(--muted)}
-.prayer blockquote{font-style:italic;color:#444;margin:6px 0 0}
-.prayer cite{display:block;margin-top:8px;color:#777}
+/* INFO cards grid */
+.info-section{padding:48px 20px;background:#f2ebe9}
+.info-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.info-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.78));
+  border-radius:12px;padding:20px;box-shadow: 0 12px 24px rgba(0,0,0,0.12), inset 0 -4px 8px rgba(0,0,0,0.03);
+  border:1px solid rgba(0,0,0,.05);backdrop-filter: blur(2px);
+}
+.info-card h3{margin:0 0 6px;font-size:14px;color:#7a3b3b}
+.info-card p{margin:0;font-size:16px;color:#222}
+.map-link{color:#6a1b1b;text-decoration:underline}
 
-/* animation states (for intersection observer) */
-.fade-up{opacity:0; transform:translateY(28px); transition:all 700ms cubic-bezier(.2,.9,.25,1)}
-.fade-up.show{opacity:1; transform:none}
-
-/* footer / small text */
-.small{font-size:13px;color:#666;margin:6px 0}
-.logo-wrap img{height:42px;opacity:0.9}
-
-/* RESPONSIVE */
-@media (max-width:700px){
-  .env-wrap{max-width:340px}
-  .hero-names .script{font-size:42px}
-  .hero-names{font-size:28px}
-  .seal{width:96px;height:96px}
-  .flap{height:58%}
+/* small screens tweaks */
+@media (max-width:600px){
+  .seal{width:70px;top:46%}
+  .tap-text{font-size:14px;bottom:-46px}
+  .details-content{padding:22px}
 }
