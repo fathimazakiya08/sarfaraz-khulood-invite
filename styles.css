@@ -141,54 +141,61 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 /* INFO SECTION - SOFT PASTEL DESIGN */
 
 .info-section{
-  background:#f7f5f2;
-  padding:100px 20px;
+  background:#7a0f1b;
+  padding:120px 20px;
   display:flex;
   justify-content:center;
 }
 
 .info-grid{
   width:100%;
-  max-width:420px;
+  max-width:900px;
   display:grid;
-  gap:20px;
+  grid-template-columns:repeat(2, 1fr);
+  gap: 30px;
 }
 
 /* pastel pink glass boxes */
 .info-card{
-  background:rgba(255,182,193,0.18);
-  border:1px solid rgba(255,182,193,0.4);
-  backdrop-filter:blur(6px);
-  padding:25px;
-  border-radius:16px;
+  background:rgba(255,200,210,0.15);
+  border:1px solid rgba(255,200,210,0.4);
+  backdrop-filter:blur(8px);
+  padding: 40px 20px;
+  border-radius: 22px;;
   text-align:center;
   box-shadow:
-    0 10px 25px rgba(0,0,0,0.08);
+    0 15px 30px rgba(0,0,0,0.25);
+  transition:transform .3s ease;
+}
+
+.info-card:hover{
+  transform:translateY(-5px);
 }
 
 .info-card h3{
   font-size:14px;
-  letter-spacing:2px;
-  margin-bottom:10px;
+  letter-spacing:4px;
+  margin-bottom:15px;
   text-transform:uppercase;
-  color:#7a3b3b;
+  color:#f8d7da;
 }
 
 .info-card p{
-  font-size:16px;
+  font-size:20px;
   font-weight:600;
-  color:#4a2a2a;
+  color:white;
 }
 
 .map-link{
   display:inline-block;
-  margin-top:10px;
-  padding:10px 18px;
-  background:#7a3b3b;
-  color:white;
-  border-radius:25px;
+  margin-top:20px;
+  padding:12px 28px;
+  background:white;
+  color:#7a0f1b;
+  border-radius:30px;
   text-decoration:none;
   font-size:14px;
+  font-weight:600;
 }
 
 /* small screens tweaks */
@@ -196,4 +203,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   .seal{width:70px;top:46%}
   .tap-text{font-size:14px;bottom:-46px}
   .details-content{padding:22px}
+  .info-grid{
+    grid-template-columns:1fr;
+  }
 }
