@@ -1,6 +1,6 @@
 /* reset & base */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#f7f5f2;color:#222}
+html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#7a0f1b;color:#222}
 .hidden{display:none !important}
 
 /* ENVELOPE SCREEN */
@@ -186,7 +186,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 .location-map-container{
   position:absolute;
-  top:56%;
+  top:60%;
   left:50%;
   transform:translate(-50%, -50%);
 
@@ -203,13 +203,13 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 /* MAP BOX */
 
 .location-map{
-  width:75%;
-  max-width:420px;
-  height:180px;
+  width:60%;
+  max-width:300px;
+  height:140px;
   border-radius:14px;
   overflow:hidden;
-  margin:0 auto 16px auto;
-  box-shadow:0 12px 30px rgba(0,0,0,0.35);
+  margin:0 auto 14px auto;
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
 }
 
 .location-map iframe{
@@ -223,7 +223,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 .open-maps-btn{
   display:inline-block;
-  padding:14px 36px;
+  padding:12px 30px;
   border-radius:30px;
 
   background:rgba(255,255,255,0.15);
