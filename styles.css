@@ -1,6 +1,6 @@
 /* reset & base */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#7a0f1b;color:#222}
+html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#f7f5f2;color:#222}
 .hidden{display:none !important}
 
 /* ENVELOPE SCREEN */
@@ -169,6 +169,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   display:flex;
   justify-content:center;
   align-items:center;
+  margin-top:-2px;
 }
 
 .location-video{
@@ -186,7 +187,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 .location-map-container{
   position:absolute;
-  top:60%;
+  top:54%;
   left:50%;
   transform:translate(-50%, -50%);
 
