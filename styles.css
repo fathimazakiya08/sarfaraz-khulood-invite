@@ -130,6 +130,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   display:flex;
   justify-content: center;
   align-items: center;
+  margin-bottom:0;
 }
 
 .details-video-section video {
@@ -169,7 +170,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   display:flex;
   justify-content:center;
   align-items:center;
-  margin-top:-2px;
+  margin-top:-6px;
 }
 
 .location-video{
@@ -187,7 +188,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 .location-map-container{
   position:absolute;
-  top:54%;
+  top:46%;
   left:50%;
   transform:translate(-50%, -50%);
 
