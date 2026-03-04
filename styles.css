@@ -213,6 +213,10 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   overflow:hidden;
   margin:0 auto 14px auto;
   box-shadow:0 10px 25px rgba(0,0,0,0.35);
+  
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.25);
 }
 
 .location-map iframe{
@@ -230,7 +234,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   border-radius:30px;
 
   background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(6px);
+  backdrop-filter:blur(10px);
 
   color:white;
   text-decoration:none;
@@ -247,5 +251,36 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   .details-content{padding:22px}
   .info-grid{
     grid-template-columns:1fr;
+  }
+}
+.scroll-indicator{
+  position:absolute;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+}
+
+.scroll-indicator span{
+  display:block;
+  width:24px;
+  height:24px;
+  border-left:3px solid white;
+  border-bottom:3px solid white;
+  transform:rotate(-45deg);
+  animation:scrollArrow 1.6s infinite;
+}
+
+@keyframes scrollArrow{
+  0%{
+    opacity:0;
+    transform:translateY(-8px) rotate(-45deg);
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    transform:translateY(8px) rotate(-45deg);
   }
 }
