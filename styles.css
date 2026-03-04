@@ -126,21 +126,22 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 .details-video-section {
   width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+  background:#6f0c12;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .details-video-section video {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
-  background: #7a0f1b;
+  display: block;
 }
 
 /* THIRD VIDEO SECTION */
 .third-section{
-  background:#6f0c12; /* same maroon continuation */
+  background:#7a0f1b; /* same maroon continuation */
   display:flex;
   justify-content:center;
   align-items:center;
@@ -148,7 +149,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 }
 
 .third-video-wrap{
-  width:min(900px,94vw);
+  width:100%;
 }
 
 .third-video-wrap video{
