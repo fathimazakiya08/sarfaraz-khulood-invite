@@ -189,7 +189,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 .location-map-container{
   position:relative;
-  top:30%;
+  top:10%;
   left:50%;
   transform:translate(-50%, -50%);
 
