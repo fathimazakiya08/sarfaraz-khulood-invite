@@ -84,7 +84,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   left:0;
   width:100%;
   height:120px;
-  background:linear-gradient(to bottom, transparent, #7a0f1b);
+  background:linear-gradient(to bottom, transparent, #560216);
   z-index:2;
 }
 
@@ -131,7 +131,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   overfolw:hidden;
   margin:0;
   padding:0;
-  background:#7a0f1b;
+  background:#560216;
 }
 
 .details-video-section video {
@@ -143,7 +143,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
 
 /* THIRD VIDEO SECTION */
 .third-section{
-  background:#7a0f1b; /* same maroon continuation */
+  background:#560216; /* same maroon continuation */
   display:flex;
   justify-content:center;
   align-items:center;
@@ -181,7 +181,7 @@ html,body{height:100%;margin:0;font-family:'Playfair Display',serif;background:#
   width:100%;
   height:100%;
   object-fit:contain;
-  background:#7a0f1b;
+  background:#560216;
   z-index:0;
 }
 
